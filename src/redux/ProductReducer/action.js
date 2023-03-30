@@ -1,5 +1,5 @@
 import axios from "axios" 
-
+import { Si} from "react-icons/si"
 import { CART, GET_PRODUCT_SUCCESS, PRODUCT_FAILURE, PRODUCT_REQUEST } from "./actionTypes"
 
 
@@ -18,8 +18,3 @@ export const getProductData=(dispatch)=>{
 } 
 
 // ${parm.mens-jeans&&parm.mens-tshirt }
-
-export function handleCart(payload){
-  console.log(payload)
-  return {type:CART,payload}
-}
