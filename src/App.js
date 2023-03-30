@@ -1,25 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import * as React from "react";
+// import Homescreen from "./component/Homescreen";
+import { AllRoutes } from "./Pages/AllRoutes";
+
+// 1. import `ChakraProvider` component
+import { ChakraProvider, extendTheme } from "@chakra-ui/react";
+import { BrowserRouter } from "react-router-dom";
+// import Navbar from "./Components/Navbar";
+// import Footer from "./Components/Footer";
+// import ErrorPage from "./Pages/ErrorPage";
+// import Dashbord from "./component/Pages/Dashbord";
+
+// import Contact from "./component/Pages/Contact";
+// import NotFound from "./component/Pages/NotFound";
+// import Login from "./component/Pages/Login";
+
+// import Products from "./component/Pages/Products";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	// 2. Wrap ChakraProvider at the root of your app
+
+	const theme = extendTheme({
+		Link: {
+			baseStyle: {
+				textDecoration: "none",
+				_hover: {
+					textDecoration: "none",
+				},
+			},
+		},
+	});
+	return (
+		<BrowserRouter>
+			<ChakraProvider theme={theme}>
+				<AllRoutes />
+			</ChakraProvider>
+		</BrowserRouter>
+	);
 }
 
 export default App;
