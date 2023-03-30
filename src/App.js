@@ -1,12 +1,11 @@
 import logo from './logo.svg';
 import './App.css';
-// import { Admin } from './Pages/Admin';
-import { Dashboard } from './Components/Admin/Dashboard';
+import { Admin } from './Pages/Admin';
 
 function App() {
   return (
     <div className="App">
-<Dashboard/>
+<Admin/>
     </div>
   );
 }
