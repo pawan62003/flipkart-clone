@@ -30,11 +30,9 @@ function App() {
 		},
 	});
 	return (
-		<BrowserRouter>
-			<ChakraProvider theme={theme}>
-				<AllRoutes />
-			</ChakraProvider>
-		</BrowserRouter>
+		<ChakraProvider theme={theme}>
+			<AllRoutes />
+		</ChakraProvider>
 	);
 }
 
