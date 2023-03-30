@@ -1,5 +1,5 @@
 import axios from "axios" 
-import { Si} from "react-icons/si"
+
 import { CART, GET_PRODUCT_SUCCESS, PRODUCT_FAILURE, PRODUCT_REQUEST } from "./actionTypes"
 
 
