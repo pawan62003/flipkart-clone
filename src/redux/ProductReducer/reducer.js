@@ -6,11 +6,6 @@ const initialState={
     products:[],
     cart:[]
 }
-
-
-
-
-
 export const reducer = (state=initialState,{type,payload}) => {
   switch (type) {
     case PRODUCT_REQUEST:
