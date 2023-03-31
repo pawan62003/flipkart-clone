@@ -4,7 +4,7 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import styled from "styled-components"
-import { handleCart } from '../redux/ProductReducer/action'
+// import { handleCart } from '../redux/ProductReducer/action'
 // import { handleCart } from '../Redux/ProductReducer/action'
 const ProductCard = ({title,brand,defaultImages,image,price,discount,gender,id}) => {
   
