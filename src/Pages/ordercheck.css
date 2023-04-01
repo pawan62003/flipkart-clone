@@ -1,58 +1,59 @@
-#cartpage{
-    background-color: whitesmoke;
+#main-ordercheckout{
+    background-color:#F2F1EF;
 }
-
-#container{
+#order{
+    width: 80%;
+    /* border: 2px solid royalblue; */
+    margin: auto;
     display: flex;
+    justify-content: space-around;
     flex-direction: row;
     gap: 20px;
-    width: 70%;
-    margin: auto;
-}
-#container > #firstcontainer{
-    width: 60%;
+    margin-top: 15px;
 }
 
-#container > #secondcontainer{
-    width: 40%;
+#orderfirst{
+    width: 67%;
+}
+
+#ordersecond{
+    width: 30%;
 }
 
 @media all and (min-width:830px) and (max-width:1000px) {
-    #container {
+    #order {
         flex-direction: column;
     }
-    #container > #firstcontainer{
+    #order > #orderfirst{
         width: 100%;
     }
     
-    #container > #secondcontainer{
+    #order > #ordersecond{
         width: 100%;
     }
 }
 @media all and (min-width:500px) and (max-width:830px) {
-    #container {
+    #order {
         flex-direction: column;
-        
     }
-    #container > #firstcontainer{
+    #order > #orderfirst{
         width: 100%;
     }
-    
-    #container > #secondcontainer{
+    #order > #ordersecond{
         width: 100%;
     }
 }
 
 @media all and (min-width:100px) and (max-width:499px) {
-    #container {
+    #order {
         /* grid-template-columns: repeat(1, 1fr); */
         flex-direction: column;
     }
-    #container > #firstcontainer{
+    #order > #orderfirst{
         width: 100%;
     }
     
-    #container > #secondcontainer{
+    #order > #ordersecond{
         width: 100%;
     }
 }

@@ -14,7 +14,7 @@ const ProductCard = ({title,brand,defaultImages,image,price,discount,gender,id})
 
   function HandleAddCart(){
    
-    dispatch(handleCart(prod))
+    // dispatch(handleCart(prod))
 
   }
 

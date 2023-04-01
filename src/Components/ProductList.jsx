@@ -8,10 +8,10 @@ import ProductCard from "./ProductCard"
 const ProductList = () => {
   const dispatch =useDispatch()
   const {products}=useSelector((store)=>{
-    //console.log(store.productReducer)
+   console.log(store.productReducer)
     return store.productReducer
   })
-  console.log(products.products)
+ // console.log(products)
   
   useEffect(()=>{
     dispatch(getProductData)
