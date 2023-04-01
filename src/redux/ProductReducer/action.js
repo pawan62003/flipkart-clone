@@ -1,4 +1,4 @@
-import { ADD_PRODUCT_SUCCESS, PRODUCT_FAILURE, PRODUCT_REQUEST } from "./actionTypes"
+import { ADD_PRODUCT_SUCCESS, CART, GET_PRODUCT_SUCCESS, PRODUCT_FAILURE, PRODUCT_REQUEST } from "./actionTypes"
 import axios from "axios"
 
 export const addProduct=(data)=>(dispatch)=>{
