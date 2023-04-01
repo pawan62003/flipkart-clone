@@ -1,13 +1,11 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import { Dashboard } from "../Components/Admin/Dashboard";
-import  {Admin}  from "./Admin";
 import Cart from "./Cart";
 import ErrorPage from "./ErrorPage";
 import HomePage from "./HomePage";
 import ProductDetail from "./ProductDetail";
 import ProductPage from "./ProductPage";
-import Ordercheck from "./ordercheck";
 
 export const AllRoutes = () => {
 	return (
