@@ -4,6 +4,7 @@ import { Admin } from "./Admin";
 import Cart from "./Cart";
 import ErrorPage from "./ErrorPage";
 import HomePage from "./HomePage";
+import Ordercheck from "./ordercheck";
 
 export const AllRoutes = () => {
 	return (
@@ -11,7 +12,9 @@ export const AllRoutes = () => {
 			<Route path="/" element={<HomePage />} />
 			<Route path="/cart" element={<Cart />} />
 			<Route path="/admin" element={<Admin />} />
+			<Route path="/ordercheck" element={<Ordercheck />} />
 			<Route path="*" element={<ErrorPage />} />
+
 		</Routes>
 	);
 };
