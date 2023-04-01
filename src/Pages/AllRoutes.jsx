@@ -7,6 +7,7 @@ import ErrorPage from "./ErrorPage";
 import HomePage from "./HomePage";
 import ProductDetail from "./ProductDetail";
 import ProductPage from "./ProductPage";
+import Ordercheck from "./ordercheck";
 
 export const AllRoutes = () => {
 	return (
@@ -17,6 +18,7 @@ export const AllRoutes = () => {
 			<Route path="/dashboard" element={<Dashboard />} />
 			<Route path="*" element={<ErrorPage />} />
 			<Route path="/product" element={<ProductPage/>} />
+			<Route path="/ordercheck" element={<Ordercheck />} />
 			<Route path="/product/:id" element={<ProductDetail/>} />
 		</Routes>
 	);

@@ -14,7 +14,7 @@ const ProductList = () => {
   console.log(products.products)
   
   useEffect(()=>{
-    dispatch(getProductData)
+    // dispatch(getProductData)
   },[])
   return (
     <div style={{justifyContent:"right"}}>

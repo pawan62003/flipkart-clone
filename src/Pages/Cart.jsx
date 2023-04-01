@@ -3,6 +3,8 @@ import Navbar from "../Components/Navbar";
 import {Badge,Button,Center,Flex,Heading,Image,Link,Stack,Text,useColorModeValue,} from '@chakra-ui/react';
 import './cart.css'
 import { useDispatch, useSelector } from "react-redux";
+import { useToast } from '@chakra-ui/react';
+import { useNavigate } from "react-router-dom";
 import { decrementProduct, deleteCart, incrementProduct } from "../redux/cartReducer/action";
 
 const Cart = () => {
@@ -10,10 +12,24 @@ const Cart = () => {
   const colorVal = useColorModeValue('white', 'gray.600')
   const cartData = useSelector(store => store.cartReducer);
   const dispatch = useDispatch()
+  const toast = useToast();
+  const navigate = useNavigate();
 
   const handleCartDelete = (id) => {
     dispatch(deleteCart(id))
+    toast({
+      title: 'Item Deleted.',
+      description: "We've delete this item.",
+      status: 'success',
+      duration: 9000,
+      isClosable: true,
+    })
   }
+
+  const handlePlaceOrder = () => {
+     navigate('/ordercheck')
+  }
+
   const handleCartQty = (id) => {
     dispatch(incrementProduct(id));
   }
@@ -118,7 +134,6 @@ const Cart = () => {
                 </Button>
                 <Button
                 onClick={()=>handleCartqtyInc(item.id)}
-                disabled={item.qty===1}
                   flex={1}
                   fontSize={'2xl'}
                   padding={'10px'}
@@ -127,6 +142,7 @@ const Cart = () => {
                   color={'white'}
                   paddingLeft={'23px'}
                   paddingRight={'23px'}
+                  isDisabled={item.qty===1}
                   boxShadow={
                     '0px 1px 25px -5px rgb(66 153 225 / 48%), 0 10px 10px -5px rgb(66 153 225 / 43%)'
                   }
@@ -167,6 +183,7 @@ const Cart = () => {
       
      <div style={{width:'87%',margin:'auto',marginBottom:'10px',boxShadow:'0px 1px 25px -5px rgb(66 153 225 / 48%), 0 10px 10px -5px rgb(66 153 225 / 43%)'}}>
      <Button
+                onClick={handlePlaceOrder}
                 flex={1}
                 fontSize={'30px'}
                 // rounded={'full'}
