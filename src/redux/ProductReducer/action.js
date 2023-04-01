@@ -7,9 +7,5 @@ export const addProduct=(data)=>(dispatch)=>{
   }).catch(()=>{
     dispatch({type:PRODUCT_FAILURE})
   })
-  dispatch({type:ADD_PRODUCT_SUCCESS})
-    } catch (error) {
-        dispatch({type:PRODUCT_FAILURE})
-    }
- 
 }
+ 
