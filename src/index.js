@@ -1,24 +1,29 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import { BrowserRouter } from 'react-router-dom';
-import { Provider } from 'react-redux';
-import { store } from './redux/store';
-import { ChakraProvider } from '@chakra-ui/react';
-
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import { BrowserRouter } from "react-router-dom";
+import { Provider } from "react-redux";
+import { store } from "./redux/store";
+import { ChakraProvider } from "@chakra-ui/react";
+import { Auth0Provider } from "@auth0/auth0-react";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-<BrowserRouter>
-<ChakraProvider>
-  <Provider store={store}>
-  <App />
-</Provider>
-</ChakraProvider>
-</BrowserRouter>
-   
- 
+	<BrowserRouter>
+		<Auth0Provider
+			domain="dev-36jbpvwtgmgzxos3.us.auth0.com"
+			clientId="wFIeRaDIG6v4zf9nUQ4itdfWRJonkhiL"
+			authorizationParams={{
+				redirect_uri: window.location.origin,
+			}}>
+			<ChakraProvider>
+				<Provider store={store}>
+					<App />
+				</Provider>
+			</ChakraProvider>
+		</Auth0Provider>
+	</BrowserRouter>
 );
 
 // If you want to start measuring performance in your app, pass a function

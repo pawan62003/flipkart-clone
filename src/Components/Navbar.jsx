@@ -23,8 +23,11 @@ import { FaShoppingBag } from "react-icons/fa";
 import { FaUserAlt } from "react-icons/fa";
 
 import "./navbar.css";
+import { useAuth0 } from "@auth0/auth0-react";
 
 function Navbar() {
+	const { loginWithRedirect, isAuthenticated, logout, user } = useAuth0();
+
 	return (
 		<Flex
 			p="3"
@@ -77,13 +80,29 @@ function Navbar() {
 				<FaShoppingBag />
 			</Link>
 			<Spacer />
-			<Link fontSize="1.6em" href="/login">
+			{isAuthenticated && (
+				<Link fontSize="1.6em" href="/login">
+					<FaUserAlt />
+				</Link>
+			)}
+			<Spacer />
+			<p>Welcome! </p>
+			{/* <Link fontSize="1.6em" href="/login">
 				<FaUserAlt />
 			</Link>
 			<Spacer />
 			<Link fontSize="1.6em" href="/contact">
 				<BsMailbox2 />
-			</Link>
+			</Link> */}
+			{isAuthenticated && <p>|| {user.name} || </p>}
+			<Spacer />
+			{isAuthenticated ? (
+				<Button onClick={() => logout({ returnTo: window.location.origin })}>
+					Log Out
+				</Button>
+			) : (
+				<Button onClick={() => loginWithRedirect()}>Log In</Button>
+			)}
 
 			<Spacer />
 		</Flex>
