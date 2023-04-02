@@ -1,11 +1,12 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { getProductData } from '../redux/ProductReducer/action'
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getProductData } from "../redux/ProductReducer/action";
 //import styled from 'styled-components'
 //import SideBarProduct from './SideBarProduct'
-import ProductCard from "./ProductCard"
+import ProductCard from "./ProductCard";
 
 const ProductList = () => {
+
   const dispatch =useDispatch()
   const {products}=useSelector((store)=>{
    //console.log(store.productReducer)
@@ -33,6 +34,6 @@ const ProductList = () => {
         </div>
     </div>
   )
-}
+};
 
-export default ProductList
+export default ProductList;

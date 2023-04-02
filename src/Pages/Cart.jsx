@@ -10,7 +10,7 @@ import { decrementProduct, deleteCart, incrementProduct } from "../redux/cartRed
 const Cart = () => {
   let totalPrice = 0;
   const colorVal = useColorModeValue('white', 'gray.600')
-  const cartData = useSelector(store => store.cartReducer);
+  const cartData = useSelector(store => store.cartReducer.cartData);
   const dispatch = useDispatch()
   const toast = useToast();
   const navigate = useNavigate();
@@ -116,8 +116,8 @@ const Cart = () => {
                   rounded={'full'}
                   bg={'blue.400'}
                   color={'white'}
-                  paddingLeft={'20px'}
-                  paddingRight={'20px'}
+                  paddingLeft={'15px'}
+                  paddingRight={'15px'}
                   boxShadow={
                     '0px 1px 25px -5px rgb(66 153 225 / 48%), 0 10px 10px -5px rgb(66 153 225 / 43%)'
                   }
@@ -140,8 +140,8 @@ const Cart = () => {
                   rounded={'full'}
                   bg={'blue.400'}
                   color={'white'}
-                  paddingLeft={'23px'}
-                  paddingRight={'23px'}
+                  paddingLeft={'15px'}
+                  paddingRight={'15px'}
                   isDisabled={item.qty===1}
                   boxShadow={
                     '0px 1px 25px -5px rgb(66 153 225 / 48%), 0 10px 10px -5px rgb(66 153 225 / 43%)'
@@ -163,6 +163,8 @@ const Cart = () => {
                   rounded={'full'}
                   bg={'red.400'}
                   color={'white'}
+                  paddingLeft={'15px'}
+                  paddingRight={'15px'}
                   boxShadow={
                     '0px 1px 25px -5px rgb(66 153 225 / 48%), 0 10px 10px -5px rgb(66 153 225 / 43%)'
                   }

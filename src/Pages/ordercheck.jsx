@@ -1,18 +1,22 @@
 import { Box, Spacer,Text,useToast,useColorModeValue,Stack,Image,Center } from '@chakra-ui/react'
-import { Link } from 'react-router-dom';
+import { Link,useNavigate } from 'react-router-dom';
 import './ordercheck.css';
 import {Accordion,Radio,RadioGroup,AccordionItem,AccordionButton,AccordionPanel,AccordionIcon,Button} from '@chakra-ui/react'
 import {Progress,ButtonGroup,Heading,Flex,FormControl,GridItem,FormLabel,Input,Select,SimpleGrid,InputLeftAddon,InputGroup,Textarea,FormHelperText,InputRightElement,} from '@chakra-ui/react';
 import React from 'react';
 import {useState} from 'react'
 import { useDispatch, useSelector } from "react-redux";
-import { decrementProduct, deleteCart, incrementProduct } from "../redux/cartReducer/action";
+import { decrementProduct,conformOreder, deleteCart, incrementProduct } from "../redux/cartReducer/action";
+import { CheckIcon,Icon } from '@chakra-ui/icons';
+import {Modal,useDisclosure,ModalOverlay,ModalContent,ModalHeader,ModalFooter,ModalBody,ModalCloseButton,} from '@chakra-ui/react'
 
 const Ordercheck = () => {
  let totalPrice = 0;
    const colorVal = useColorModeValue('white', 'gray.600')
-  const cartData = useSelector(store => store.cartReducer);
-  const dispatch = useDispatch()
+  const cartData = useSelector(store => store.cartReducer.cartData);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { isOpen, onOpen, onClose } = useDisclosure()
 
   const handleCartDelete = (id) => {
     dispatch(deleteCart(id))
@@ -35,10 +39,19 @@ const Ordercheck = () => {
 
   for(let i=0;i<cartData.length;i++){
    totalPrice+=(+cartData[i].price)*(cartData[i].qty)
-   // console.log(+cartData[i].price,)
  }
 
-
+ const handleConform = () => {
+  dispatch(conformOreder())
+  toast({
+    title: 'Order Placed',
+    description: "We've Placed Your Order",
+    status: 'success',
+    duration: 9000,
+    isClosable: true,
+  })
+   navigate("/orderhistory")
+ }
 
    const toast = useToast();
    const [step, setStep] = useState(1);
@@ -46,7 +59,7 @@ const Ordercheck = () => {
     return <>
 
      <div id='main-ordercheckout'>
-     <Box bg='blue.500' w='100%' p={1} color='white'>
+     <Box marginRight={'12%'} bg='blue.500' w='100%' p={1} color='white'>
      <Link href="/">
 				<Box
 					fontSize={["1.3em", "1.3em", "1.8em", "1.8em"]}
@@ -74,7 +87,7 @@ const Ordercheck = () => {
             <h2>
               <AccordionButton>
                 <Box as="span" flex='1' textAlign='left'>
-                  LOGIN
+                  LOGIN <Icon as={CheckIcon} color={'blue.500'}/>
                   <h1>+91 6200327812</h1>
                 </Box>
                 <Button colorScheme='blue' variant='outline'>
@@ -92,7 +105,7 @@ const Ordercheck = () => {
                <h2>
                <AccordionButton>
                    <Box as="span" flex='1' textAlign='left' padding={3}>
-				     DELIVERY ADDRESS
+				     DELIVERY ADDRESS <Icon as={CheckIcon} color={'blue.500'}/>
 					 <Text>remnagri,Raja Bazar,Patna,Bihar,800025</Text>
                    </Box>
                   {/* <AccordionIcon /> */}
@@ -159,8 +172,8 @@ const Ordercheck = () => {
                  variant="solid"
                  onClick={() => {
                    toast({
-                     title: 'Account created.',
-                     description: "We've created your account for you.",
+                     title: 'Address Updated.',
+                     description: "We've Update your Address for you.",
                      status: 'success',
                      duration: 3000,
                      isClosable: true,
@@ -181,7 +194,7 @@ const Ordercheck = () => {
                <h2>
                <AccordionButton>
                    <Box as="span" flex='1' textAlign='left' padding={3}>
-                    ORDER SUMMARY
+                    ORDER SUMMARY  <Icon as={CheckIcon} color={'blue.500'}/>
                     <h1>{cartData.length} item selected</h1>
                    </Box>
                    <Button colorScheme='blue' variant='outline'>
@@ -261,8 +274,8 @@ const Ordercheck = () => {
                   rounded={'full'}
                   bg={'blue.400'}
                   color={'white'}
-                  paddingLeft={'20px'}
-                  paddingRight={'20px'}
+                  paddingLeft={'15px'}
+                  paddingRight={'15px'}
                   boxShadow={
                     '0px 1px 25px -5px rgb(66 153 225 / 48%), 0 10px 10px -5px rgb(66 153 225 / 43%)'
                   }
@@ -286,8 +299,8 @@ const Ordercheck = () => {
                   rounded={'full'}
                   bg={'blue.400'}
                   color={'white'}
-                  paddingLeft={'23px'}
-                  paddingRight={'23px'}
+                  paddingLeft={'15px'}
+                  paddingRight={'15px'}
                   isDisabled={item.qty===1}
                   boxShadow={
                     '0px 1px 25px -5px rgb(66 153 225 / 48%), 0 10px 10px -5px rgb(66 153 225 / 43%)'
@@ -307,6 +320,8 @@ const Ordercheck = () => {
                   padding={'4px'}
                   fontSize={'m'}
                   rounded={'full'}
+                  paddingLeft={'15px'}
+                  paddingRight={'15px'}
                   bg={'red.400'}
                   color={'white'}
                   boxShadow={
@@ -335,7 +350,7 @@ const Ordercheck = () => {
               <h2>
               <AccordionButton>
                   <Box as="span" flex='1' textAlign='left'>
-                    PAYMENT OPTIONS
+                    PAYMENT OPTIONS  <Icon as={CheckIcon} color={'blue.500'}/>
                   </Box>
                   <Button colorScheme='blue' variant='outline'>
                     CHANGE
@@ -343,7 +358,7 @@ const Ordercheck = () => {
              </AccordionButton>
               </h2>
               <AccordionPanel pb={4}>
-              <Box bg='blue.500' w='100%' p={4}  color='white'>
+              <Box bg='blue.500' w='100%' p={4} color='white'>
                </Box>
               <RadioGroup defaultValue='2'margin={3}>
               <Stack spacing={5}>
@@ -360,15 +375,40 @@ const Ordercheck = () => {
                   Debit/Cradit Card
                 </Radio>
               </Stack>
-            </RadioGroup>            
+            </RadioGroup>   
+                    
+            <Button marginLeft={"47%"} colorScheme='blue'  onClick={onOpen}>Next</Button>
+                 <Modal isOpen={isOpen}  onClose={onClose}>
+                   <ModalOverlay />
+                   <ModalContent>
+                     <ModalHeader>INVOICE</ModalHeader>
+                     <ModalCloseButton />
+                     <ModalBody>
+                       <div>
+                        {
+                          cartData.map(item => <div style={{display:'flex',justifyContent:'space-between'}}>
+                            <div>{item.title}</div>
+                            <div>{item.qty*item.price}</div>
+
+                          </div>)
+                        }
+                       </div>
+                     </ModalBody>
+                     <ModalFooter>
+                       <Button variant='ghost' colorScheme='blue' mr={3} onClick={onClose}>
+                         Close
+                       </Button>
+                       <Button onClick={handleConform} colorScheme='blue' >Conform</Button>
+                     </ModalFooter>
+                   </ModalContent>
+                 </Modal>
               </AccordionPanel>
             </AccordionItem>
           </Accordion>
-           
-
+         
         </div>
         <div id='ordersecond'>
-        <div style={{border:'1px solid #BFBFBF',backgroundColor:'white',padding:'15px',width:'90%',margin:'auto',marginTop:'30px'}}>
+        <div style={{boxShadow:'rgba(149, 157, 165, 0.2) 0px 8px 24px',backgroundColor:'white',padding:'15px',width:'90%',margin:'auto',marginTop:'30px'}}>
          <h1 style={{fontSize:'30px'}}>PRICE DETAILS</h1><hr/>
          <div style={{display:'flex',justifyContent:"space-between",fontSize:'25px',gap:'40px'}}>
             <h1>Total price</h1>
@@ -389,10 +429,20 @@ const Ordercheck = () => {
          <h1 style={{padding:'5px',color:'green'}}>You will save 6382 on this order</h1>
         </div>
 
-        <div style={{padding:'10px',display:"flex",width:'90%',margin:'auto',marginTop:'20px'}}>
+        <div style={{boxShadow:'rgba(149, 157, 165, 0.2) 0px 8px 24px',backgroundColor:'white',padding:'10px',display:"flex",width:'90%',margin:'auto',marginTop:'20px'}}>
+          <img width={'13%'} src="https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/super-coin_bac003.svg" alt="" />
+           <h1>safe and secure payments. Easy returns 100% Authentic Products</h1>
+        </div>
+        <div style={{marginBottom:'12px',boxShadow:'rgba(149, 157, 165, 0.2) 0px 8px 24px',backgroundColor:'white',padding:'10px',display:"flex",gap:'20px',width:'90%',margin:'auto'}}>
+          <img width={'10%'} src="https://img1a.flixcart.com/www/linchpin/fk-cp-pay/axis-78501b36.svg" alt="" />
+           <h1>5% cashback on Flipkart Axis Bank Card</h1>
+        </div>
+
+        <div style={{marginBottom:'15px',padding:'10px',display:"flex",width:'90%',margin:'auto'}}>
           <img width={'10%'} src="https://www.identrust.com/sites/default/files/inline-images/secure-authentication%20%281%29.png" alt="" />
            <h1>safe and secure payments. Easy returns 100% Authentic Products</h1>
         </div>
+
         </div>
      </div>
 	 </div>
@@ -453,7 +503,6 @@ const Form1 = () => {
      </>
    );
  };
- 
  const Form2 = () => {
    return (
      <>
@@ -594,10 +643,10 @@ const Form1 = () => {
    return (
      <>
        <Heading w="100%" textAlign={'center'} fontWeight="normal">
-         Social Handles
+         {/* Social Handles */}
        </Heading>
        <SimpleGrid columns={1} spacing={6}>
-         <FormControl as={GridItem} colSpan={[3, 2]}>
+         {/* <FormControl as={GridItem} colSpan={[3, 2]}>
            <FormLabel
              fontSize="sm"
              fontWeight="md"
@@ -624,9 +673,9 @@ const Form1 = () => {
                rounded="md"
              />
            </InputGroup>
-         </FormControl>
+         </FormControl> */}
  
-         <FormControl id="email" mt={1}>
+         {/* <FormControl id="email" mt={1}>
            <FormLabel
              fontSize="sm"
              fontWeight="md"
@@ -644,16 +693,15 @@ const Form1 = () => {
              fontSize={{
                sm: 'sm',
              }}
-           />
-           <FormHelperText>
+           /> */}
+           {/* <FormHelperText>
              Brief description for your profile. URLs are hyperlinked.
-           </FormHelperText>
-         </FormControl>
+           </FormHelperText> */}
+         {/* </FormControl> */}
        </SimpleGrid>
      </>
    );
  };
  
 
- 
  
