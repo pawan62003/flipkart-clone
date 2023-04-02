@@ -1,4 +1,4 @@
-import { DECREMENT_PRODUCT, DELETE_TO_CART, INCREMENT_PRODUCT } from "./actionType";
+import { DECREMENT_PRODUCT, DELETE_TO_CART, INCREMENT_PRODUCT ,GET_ADMIN_PRODUCT} from "./actionType";
 
 const initalCart = {
     cartData:[
@@ -70,10 +70,11 @@ const initalCart = {
                 "rating": 4.2,
                 "count": 3.6
               }
-    ]
+    ],
+AdminProduct:[],
 };
 
-export const reducer = (state=initalCart.cartData,{type,payload}) => {
+export const reducer = (state=initalCart,{type,payload}) => {
 // console.log(type,payload)
   switch(type){
     case DELETE_TO_CART:{
@@ -88,8 +89,13 @@ export const reducer = (state=initalCart.cartData,{type,payload}) => {
         const decProduct = state.map(item => item.id===payload? {...item,qty:item.qty-1}:item)
         return decProduct;
     }
+case GET_ADMIN_PRODUCT:{
+return ...state
+}
     default:{
         return state;
     }
   }
 }
+
+
