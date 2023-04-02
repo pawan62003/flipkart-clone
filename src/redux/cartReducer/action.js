@@ -1,4 +1,5 @@
-import { ADD_TO_CART, DECREMENT_PRODUCT, DELETE_TO_CART, INCREMENT_PRODUCT,  } from "./actionType"
+import { ADD_TO_CART, DECREMENT_PRODUCT, DELETE_TO_CART, GET_ADMIN_PRODUCT, INCREMENT_PRODUCT,  } from "./actionType"
+import axios from "axios"
 
 export const addToCart = (payload) => {
    return {type:ADD_TO_CART,payload}
@@ -16,6 +17,12 @@ export const decrementProduct = (payload) => {
     return {type:DECREMENT_PRODUCT,payload}
 }
 
+export const getAdminProduct=(dispatch)=>{
+    return axios.get('https://weak-pink-rabbit-gear.cyclic.app/Products?_limit=15').then((res)=>{
+dispatch({type:GET_ADMIN_PRODUCT,payload:res.data})
+// console.log(res.data)
+    })
+}
 
 // {
 //     "id": 35,

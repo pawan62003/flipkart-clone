@@ -4,12 +4,13 @@ import { Dashboard } from "../Components/Admin/Dashboard";
 import  {Admin}  from "./Admin";
 import Cart from "./Cart";
 import ErrorPage from "./ErrorPage";
-import { Admin } from "./Admin";
+// import { Admin } from "./Admin";
 import HomePage from "./HomePage";
 import ProductDetail from "./ProductDetail";
 import ProductPage from "./ProductPage";
 import {EditProducts} from "./EditProducts";
 import Ordercheck from './ordercheck'
+import { PrivateRoute } from "../Components/PrivateRoute";
 
 export const AllRoutes = () => {
 	return (
@@ -17,7 +18,11 @@ export const AllRoutes = () => {
 			<Route path="/" element={<HomePage />} />
 			<Route path="/cart" element={<Cart />} />
 			<Route path="/dashboard/admin" element={<Admin/>}/>
-			<Route path="/edit/:id" element={<EditProducts/>}/>
+			<Route path="/dashboard/edit/:id" element={
+			
+				<EditProducts/>
+			
+			}/>
 			<Route path="/dashboard" element={<Dashboard />} />
 			<Route path="*" element={<ErrorPage />} />
 			<Route path="/product" element={<ProductPage/>} />

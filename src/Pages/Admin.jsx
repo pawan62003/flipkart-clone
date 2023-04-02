@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import {useDispatch} from 'react-redux'
 import { addProduct } from '../redux/ProductReducer/action'
 import styled from 'styled-components'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { AdminNavbar } from '../Components/Admin/AdminNavbar'
 
 const initialState={
     image:"",
@@ -19,9 +20,7 @@ const thStyle={
     color: "black",
     textAlign:" center",
 }
-let newData=[]
 export const Admin = () => {
-const navigate=useNavigate()
 const [product,setProduct]=useState(initialState)
 const dispatch=useDispatch()
 
@@ -40,12 +39,13 @@ const handleSubmit = (e) =>{
    
    setProduct(initialState)
 }
-newData.push(product)
-console.log(newData)
+
   return (
-    <div style={{border:"1px solid black",marginTop:"15px"}}>
+   
+    <div style={{border:"1px solid black",marginTop:"15px",backgroundColor:"beige",height:"700px"}}>
+       <AdminNavbar/>
         <h3 style={{marginBottom:"10px",fontSize:"25px"}}>Add New Products</h3>
-        {/* <AdminNavbar/> */}
+       
         <DIV>
              <form onSubmit={handleSubmit}>
             <input type="text"  onChange={(e)=>{handleChange(e)}} placeholder='Image URL'name="image" value={product.image}/>
@@ -63,45 +63,7 @@ console.log(newData)
           </select>
          <button type='submit'>Add</button>
         </form>
-        </DIV>
-        {newData.length !==0 ? <div>
-          <table style={{
-              width:"60%",
-              margin:"auto",
-              marginTop: "50px",
-              textAlign: "center",
-          }}>
-        <thead style={{border:"1px solid gray",textAlign:"center"}}>
-            <tr>
-                <th style={thStyle}>Image</th>
-                <th style={thStyle}>Title</th>
-                <th style={thStyle}>Price</th>
-                <th style={thStyle}>Category</th>
-                <th style={thStyle}>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            {newData.map((item,index)=>{
-                console.log(item)
-                return(
-                    <tr key={index}>
-                        <td>{item.image}</td>
-                        <td>{item.title}</td>
-                        <td>{item.price}</td>
-                        <td>{item.category}</td>
-                        <td>
-                            <button style={{marginRight:"15px"}}><Link to={`/edit/${index}`}>Edit</Link></button>
-                            <button onClick={()=>{setProduct(item)}}>Delete</button>
-                        </td>
-                    </tr>
-                )
-            })}
-        </tbody>
-    </table>
-    </div> : "" }
-    
-  
-          
+        </DIV>   
     </div>
   )
 }
@@ -123,6 +85,7 @@ input{
     
 }
 button{
+  border:1px solid black;
     width:50%;
     height:35px;
     border-radius: 5px;

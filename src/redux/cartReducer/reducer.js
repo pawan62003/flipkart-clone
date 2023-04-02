@@ -90,7 +90,10 @@ export const reducer = (state=initalCart,{type,payload}) => {
         return decProduct;
     }
 case GET_ADMIN_PRODUCT:{
-return ...state
+return {
+  ...state,
+    AdminProduct:payload
+}
 }
     default:{
         return state;
