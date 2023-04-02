@@ -4,6 +4,7 @@ import { getProductData } from '../redux/ProductReducer/action'
 //import styled from 'styled-components'
 //import SideBarProduct from './SideBarProduct'
 import ProductCard from "./ProductCard"
+import ProductPage from '../Pages/ProductPage'
 
 const ProductList = () => {
   const dispatch =useDispatch()
@@ -18,8 +19,7 @@ const ProductList = () => {
   },[])
   return (
     <div style={{justifyContent:"right"}}>
-        
-        <div style={{
+            <div style={{
           display:"grid",
           gridTemplateColumns:"repeat(4,1fr)",
           margin:"auto",marginTop:"25px"

@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 import styled from "styled-components"
 // import { handleCart } from '../redux/ProductReducer/action'
 // import { handleCart } from '../Redux/ProductReducer/action'
-const ProductCard = ({title,brand,defaultImages,image,price,discount,gender,id}) => {
+const ProductCard = ({title,brand,defaultImages,image,price,discount,gender,id,categories}) => {
   
   const prod={title,brand,defaultImages,image,price,discount,gender,id  }
 
@@ -21,8 +21,7 @@ const ProductCard = ({title,brand,defaultImages,image,price,discount,gender,id})
   return (
     <DIV>
     <Link to={`/product/${id}`} className='zoomCard'>
-    <Maindiv   >
-         
+    <Maindiv   >   
       <img style={{width:"100%", height:"350px", marginBottom:"5px"}} 
        src={defaultImages || image} alt={title} />
       <p style={{fontWeight:"5px",textAlign:"left"}}>{title}</p>
