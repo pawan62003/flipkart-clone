@@ -8,6 +8,7 @@ import HomePage from "./HomePage";
 import ProductDetail from "./ProductDetail";
 import ProductPage from "./ProductPage";
 import Ordercheck from "./ordercheck";
+import OrderHistory from './orderHistory';
 
 export const AllRoutes = () => {
 	return (
@@ -20,6 +21,7 @@ export const AllRoutes = () => {
 			<Route path="/product" element={<ProductPage/>} />
 			<Route path="/ordercheck" element={<Ordercheck />} />
 			<Route path="/product/:id" element={<ProductDetail/>} />
+			<Route path="orderhistory" element={<OrderHistory />} />
 		</Routes>
 	);
 };

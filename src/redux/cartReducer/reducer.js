@@ -1,4 +1,4 @@
-import { DECREMENT_PRODUCT, DELETE_TO_CART, INCREMENT_PRODUCT } from "./actionType";
+import { DECREMENT_PRODUCT,CONFORM_ORDER, DELETE_TO_CART, INCREMENT_PRODUCT } from "./actionType";
 
 const initalCart = {
     cartData:[
@@ -70,23 +70,27 @@ const initalCart = {
                 "rating": 4.2,
                 "count": 3.6
               }
-    ]
+    ],
+    cartHistory:[]
 };
 
-export const reducer = (state=initalCart.cartData,{type,payload}) => {
+export const reducer = (state=initalCart,{type,payload}) => {
 // console.log(type,payload)
   switch(type){
     case DELETE_TO_CART:{
-        const updatedData = state.filter(item => item.id!==payload);
-        return updatedData;
+        const updatedData = state.cartData.filter(item => item.id!==payload);
+        return {...state,cartData:updatedData};
     }
     case INCREMENT_PRODUCT:{
-        const incProduct = state.map(item => item.id===payload? {...item,qty:item.qty+1}:item)
-        return incProduct;
+        const incProduct = state.cartData.map(item => item.id===payload? {...item,qty:item.qty+1}:item)
+        return {...state,cartData:incProduct};
     }
     case DECREMENT_PRODUCT:{
-        const decProduct = state.map(item => item.id===payload? {...item,qty:item.qty-1}:item)
-        return decProduct;
+        const decProduct = state.cartData.map(item => item.id===payload? {...item,qty:item.qty-1}:item)
+        return {...state,cartData:decProduct};
+    }
+    case CONFORM_ORDER:{
+        return {...state,cartData:[],cartHistory:[...state.cartData,...state.cartHistory]}
     }
     default:{
         return state;
