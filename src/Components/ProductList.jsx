@@ -8,19 +8,17 @@ import ProductCard from "./ProductCard"
 const ProductList = () => {
   const dispatch =useDispatch()
   const {products}=useSelector((store)=>{
-   console.log(store.productReducer)
+   //console.log(store.productReducer)
     return store.productReducer
   })
- // console.log(products)
+ console.log(products)
   
   useEffect(()=>{
     dispatch(getProductData)
   },[])
   return (
     <div style={{justifyContent:"right"}}>
-        <div>
-            
-        </div>
+        
         <div style={{
           display:"grid",
           gridTemplateColumns:"repeat(4,1fr)",
