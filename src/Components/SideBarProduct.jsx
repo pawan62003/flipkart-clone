@@ -13,5 +13,6 @@ export default SideBarProduct
 
 
 const DIV =styled.div`
-border-right: 1px solid ;
+border-right: 1px solid grey;
+height:1000px;
 `

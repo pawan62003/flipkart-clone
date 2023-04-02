@@ -6,33 +6,34 @@ import { getProductData } from "../redux/ProductReducer/action";
 import ProductCard from "./ProductCard";
 
 const ProductList = () => {
-	const dispatch = useDispatch();
-	const { products } = useSelector((store) => {
-		console.log(store.productReducer);
-		return store.productReducer;
-	});
-	// console.log(products)
 
-	useEffect(() => {
-		dispatch(getProductData);
-	}, []);
-	return (
-		<div style={{ justifyContent: "right" }}>
-			<div></div>
-			<div
-				style={{
-					display: "grid",
-					gridTemplateColumns: "repeat(4,1fr)",
-					margin: "auto",
-					marginTop: "25px",
-				}}>
-				{products.length > 0 &&
-					products.map((item) => {
-						return <ProductCard key={item.id} {...item} />;
-					})}
-			</div>
-		</div>
-	);
+  const dispatch =useDispatch()
+  const {products}=useSelector((store)=>{
+   //console.log(store.productReducer)
+    return store.productReducer
+  })
+ console.log(products)
+  
+  useEffect(()=>{
+    dispatch(getProductData)
+  },[])
+  return (
+    <div style={{justifyContent:"right"}}>
+        
+        <div style={{
+          display:"grid",
+          gridTemplateColumns:"repeat(4,1fr)",
+          margin:"auto",marginTop:"25px"
+        }} >
+          
+            {products.length>0 && products.map((item)=>{
+              return <ProductCard key={item.id} {...item} 
+              />
+            })}
+            
+        </div>
+    </div>
+  )
 };
 
 export default ProductList;
