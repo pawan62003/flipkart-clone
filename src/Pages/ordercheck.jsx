@@ -1,19 +1,22 @@
 import { Box, Spacer,Text,useToast,useColorModeValue,Stack,Image,Center } from '@chakra-ui/react'
-import { Link } from 'react-router-dom';
+import { Link,useNavigate } from 'react-router-dom';
 import './ordercheck.css';
 import {Accordion,Radio,RadioGroup,AccordionItem,AccordionButton,AccordionPanel,AccordionIcon,Button} from '@chakra-ui/react'
 import {Progress,ButtonGroup,Heading,Flex,FormControl,GridItem,FormLabel,Input,Select,SimpleGrid,InputLeftAddon,InputGroup,Textarea,FormHelperText,InputRightElement,} from '@chakra-ui/react';
 import React from 'react';
 import {useState} from 'react'
 import { useDispatch, useSelector } from "react-redux";
-import { decrementProduct, deleteCart, incrementProduct } from "../redux/cartReducer/action";
+import { decrementProduct,conformOreder, deleteCart, incrementProduct } from "../redux/cartReducer/action";
 import { CheckIcon,Icon } from '@chakra-ui/icons';
+import {Modal,useDisclosure,ModalOverlay,ModalContent,ModalHeader,ModalFooter,ModalBody,ModalCloseButton,} from '@chakra-ui/react'
 
 const Ordercheck = () => {
  let totalPrice = 0;
    const colorVal = useColorModeValue('white', 'gray.600')
-  const cartData = useSelector(store => store.cartReducer);
-  const dispatch = useDispatch()
+  const cartData = useSelector(store => store.cartReducer.cartData);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { isOpen, onOpen, onClose } = useDisclosure()
 
   const handleCartDelete = (id) => {
     dispatch(deleteCart(id))
@@ -36,10 +39,19 @@ const Ordercheck = () => {
 
   for(let i=0;i<cartData.length;i++){
    totalPrice+=(+cartData[i].price)*(cartData[i].qty)
-   // console.log(+cartData[i].price,)
  }
 
-
+ const handleConform = () => {
+  dispatch(conformOreder())
+  toast({
+    title: 'Order Placed',
+    description: "We've Placed Your Order",
+    status: 'success',
+    duration: 9000,
+    isClosable: true,
+  })
+   navigate("/orderhistory")
+ }
 
    const toast = useToast();
    const [step, setStep] = useState(1);
@@ -160,8 +172,8 @@ const Ordercheck = () => {
                  variant="solid"
                  onClick={() => {
                    toast({
-                     title: 'Account created.',
-                     description: "We've created your account for you.",
+                     title: 'Address Updated.',
+                     description: "We've Update your Address for you.",
                      status: 'success',
                      duration: 3000,
                      isClosable: true,
@@ -364,7 +376,32 @@ const Ordercheck = () => {
                 </Radio>
               </Stack>
             </RadioGroup>   
-            <Button marginLeft={"47%"} colorScheme='blue'>Next</Button>         
+                    
+            <Button marginLeft={"47%"} colorScheme='blue'  onClick={onOpen}>Next</Button>
+                 <Modal isOpen={isOpen}  onClose={onClose}>
+                   <ModalOverlay />
+                   <ModalContent>
+                     <ModalHeader>INVOICE</ModalHeader>
+                     <ModalCloseButton />
+                     <ModalBody>
+                       <div>
+                        {
+                          cartData.map(item => <div style={{display:'flex',justifyContent:'space-between'}}>
+                            <div>{item.title}</div>
+                            <div>{item.qty*item.price}</div>
+
+                          </div>)
+                        }
+                       </div>
+                     </ModalBody>
+                     <ModalFooter>
+                       <Button variant='ghost' colorScheme='blue' mr={3} onClick={onClose}>
+                         Close
+                       </Button>
+                       <Button onClick={handleConform} colorScheme='blue' >Conform</Button>
+                     </ModalFooter>
+                   </ModalContent>
+                 </Modal>
               </AccordionPanel>
             </AccordionItem>
           </Accordion>
@@ -606,10 +643,10 @@ const Form1 = () => {
    return (
      <>
        <Heading w="100%" textAlign={'center'} fontWeight="normal">
-         Social Handles
+         {/* Social Handles */}
        </Heading>
        <SimpleGrid columns={1} spacing={6}>
-         <FormControl as={GridItem} colSpan={[3, 2]}>
+         {/* <FormControl as={GridItem} colSpan={[3, 2]}>
            <FormLabel
              fontSize="sm"
              fontWeight="md"
@@ -636,9 +673,9 @@ const Form1 = () => {
                rounded="md"
              />
            </InputGroup>
-         </FormControl>
+         </FormControl> */}
  
-         <FormControl id="email" mt={1}>
+         {/* <FormControl id="email" mt={1}>
            <FormLabel
              fontSize="sm"
              fontWeight="md"
@@ -656,14 +693,15 @@ const Form1 = () => {
              fontSize={{
                sm: 'sm',
              }}
-           />
-           <FormHelperText>
+           /> */}
+           {/* <FormHelperText>
              Brief description for your profile. URLs are hyperlinked.
-           </FormHelperText>
-         </FormControl>
+           </FormHelperText> */}
+         {/* </FormControl> */}
        </SimpleGrid>
      </>
    );
  };
  
 
+ 
