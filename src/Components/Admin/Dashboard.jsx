@@ -77,7 +77,9 @@ export const Dashboard = () => {
 </ul>
       </div>
     </div>
+    <h1 style={{marginLeft:"250px"}}>Newly Added Products</h1>
     <DIV>
+      
       {AdminProduct.map((el)=>
       <div key={el.id}>
        <img src={el.defaultImages} alt={el.title} />
@@ -99,7 +101,7 @@ const DIV=styled.div`
 margin-left:310px;
 padding:15px;
    display:grid;
-  border:1px solid black;
+  /* border:1px solid black; */
   justify-content:center;
   align-items:center;
   grid-template-columns: repeat(3,auto);
@@ -111,6 +113,7 @@ width:300px;
 }
 img{
   width:80%;
+  margin:auto;
 }
 button{
   padding:5px;
