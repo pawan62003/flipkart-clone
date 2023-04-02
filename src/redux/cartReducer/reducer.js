@@ -1,4 +1,5 @@
-import { DECREMENT_PRODUCT,CONFORM_ORDER, DELETE_TO_CART, INCREMENT_PRODUCT } from "./actionType";
+
+import { DECREMENT_PRODUCT, DELETE_TO_CART, INCREMENT_PRODUCT ,GET_ADMIN_PRODUCT,CONFORM_ORDER} from "./actionType";
 
 const initalCart = {
     cartData:[
@@ -71,7 +72,9 @@ const initalCart = {
                 "count": 3.6
               }
     ],
-    cartHistory:[]
+
+    cartHistory:[],
+AdminProduct:[],
 };
 
 export const reducer = (state=initalCart,{type,payload}) => {
@@ -92,8 +95,13 @@ export const reducer = (state=initalCart,{type,payload}) => {
     case CONFORM_ORDER:{
         return {...state,cartData:[],cartHistory:[...state.cartData,...state.cartHistory]}
     }
+case GET_ADMIN_PRODUCT:{
+return ...state
+}
     default:{
         return state;
     }
   }
 }
+
+

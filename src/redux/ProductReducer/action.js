@@ -9,7 +9,7 @@ export const addProduct=(data)=>(dispatch)=>{
     dispatch({type:PRODUCT_FAILURE})
   })
 }
-
+ 
 export const getProductData=(dispatch)=>{
   // console.log("running")
  dispatch({type:PRODUCT_REQUEST})
@@ -30,3 +30,4 @@ export function handleCart(payload){
  return {type:CART,payload}
 }
 
+export const editData=()=>()=>{}
