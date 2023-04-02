@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import {useDispatch} from 'react-redux'
 import { addProduct } from '../redux/ProductReducer/action'
 import styled from 'styled-components'
+import { useNavigate } from 'react-router-dom'
 
 const initialState={
     image:"",
@@ -20,7 +21,7 @@ const thStyle={
 }
 let newData=[]
 export const Admin = () => {
-    
+const navigate=useNavigate()
 const [product,setProduct]=useState(initialState)
 const dispatch=useDispatch()
 
@@ -89,7 +90,7 @@ console.log(newData)
                         <td>{item.price}</td>
                         <td>{item.category}</td>
                         <td>
-                            <button onClick={()=>{setProduct(item)}}  style={{marginRight:"15px"}}>Edit</button>
+                            <button style={{marginRight:"15px"}}><Link to={`/edit/${index}`}>Edit</Link></button>
                             <button onClick={()=>{setProduct(item)}}>Delete</button>
                         </td>
                     </tr>

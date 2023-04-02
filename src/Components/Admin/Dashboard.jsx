@@ -7,8 +7,8 @@ export const Dashboard = () => {
 
 
   return (
-   
-    <div className='container'>
+   <>
+       <div className='container'>
 
        
       <div className='navigation' >
@@ -74,13 +74,14 @@ export const Dashboard = () => {
         <ion-icon name="search-outline"></ion-icon>
       </label>
     </div>
-    <div className='user'>
-      <img src="" alt="" />
-      <ion-icon name="person-outline"></ion-icon>
-  </div>
   </div>
 </div>
     </div>
+    <div>
+      
+    </div>
+   </>
+
 
   
   )

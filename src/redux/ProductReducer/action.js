@@ -8,4 +8,6 @@ export const addProduct=(data)=>(dispatch)=>{
     dispatch({type:PRODUCT_FAILURE})
   })
 }
- 
+ export const editData=()=>()=>{
+
+ }
