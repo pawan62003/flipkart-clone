@@ -48,3 +48,4 @@ ans order some product at a easily way
 <img src="/public/Images/addProduct.png" alt="homepage"/>
 <h3>Error Page</h3>
 <img src="/public/Images/Error.png" alt="homepage"/>
+
