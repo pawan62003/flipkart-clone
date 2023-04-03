@@ -23,7 +23,6 @@ const HomePage = () => {
 
 			<ImageGrid />
 
-
 			{isSmallerThan768 ? null : (
 				<Grid width="100%" m="auto" templateColumns="repeat(5, 1fr)" gap={1}>
 					{[1, 2, 3, 4, 5].map((i) => {
@@ -31,7 +30,6 @@ const HomePage = () => {
 					})}
 				</Grid>
 			)}
-
 			<CardMaker data={cleaningHousehold} heading="Cleaning And HouseHolds" />
 			<ImageGrid2 />
 			<br />

@@ -79,6 +79,7 @@ export const Dashboard = () => {
     </div>
     <h1 style={{marginLeft:"250px"}}>Newly Added Products</h1>
     <DIV>
+      
       {AdminProduct.map((el)=>
       <div key={el.id}>
        <img src={el.defaultImages} alt={el.title} />

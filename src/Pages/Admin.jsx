@@ -4,7 +4,7 @@ import { addProduct } from "../redux/ProductReducer/action";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { Link } from "@chakra-ui/react";
-
+import { AdminNavbar } from "../Components/Admin/AdminNavbar";
 const initialState = {
 	image: "",
 	title: "",
@@ -45,6 +45,7 @@ export const Admin = () => {
 	console.log(newData);
 	return (
 		<div style={{ border: "1px solid black", marginTop: "15px" }}>
+		  <AdminNavbar/>
 			<h3 style={{ marginBottom: "10px", fontSize: "25px" }}>
 				Add New Products
 			</h3>
