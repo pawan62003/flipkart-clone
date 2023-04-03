@@ -25,3 +25,6 @@ ans order some product at a easily way
 -then go the cart section and do checkOut.
 -then add your address.
 -then you can order this product.
+
+<h3>HomePage</h3>
+<img src="C:\Users\abhig\OneDrive\Pictures\Screenshots\Screenshot 2023-04-03 140916.png"/>
