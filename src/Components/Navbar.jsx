@@ -25,9 +25,11 @@ import { FaUserAlt } from "react-icons/fa";
 
 import "./navbar.css";
 import { useAuth0 } from "@auth0/auth0-react";
+import { useMediaQuery } from "@chakra-ui/react";
 
 function Navbar() {
 	const { loginWithRedirect, isAuthenticated, logout, user } = useAuth0();
+	const [isSmallerThan768] = useMediaQuery("(max-width: 768px)");
 
 	return (
 		<Flex
@@ -61,15 +63,17 @@ function Navbar() {
 				</Box>
 			</Link>
 			<Spacer />
-			<Input
-				borderRadius="10px"
-				type="text"
-				width={600}
-				placeholder="Search"
-				ml="2"
-				size="sm"
-				bg="white.20"
-			/>
+			{isSmallerThan768 ? null : (
+				<Input
+					borderRadius="10px"
+					type="text"
+					width={400}
+					placeholder="Search"
+					ml="2"
+					size="sm"
+					bg="white.20"
+				/>
+			)}
 
 			<Spacer />
 
