@@ -23,8 +23,13 @@ import { FaShoppingBag } from "react-icons/fa";
 import { FaUserAlt } from "react-icons/fa";
 
 import "./navbar.css";
+import { useAuth0 } from "@auth0/auth0-react";
+import { useMediaQuery } from "@chakra-ui/react";
 
 function Navbar() {
+	const { loginWithRedirect, isAuthenticated, logout, user } = useAuth0();
+	const [isSmallerThan768] = useMediaQuery("(max-width: 768px)");
+
 	return (
 		<Flex
 			p="3"
@@ -57,15 +62,17 @@ function Navbar() {
 				</Box>
 			</Link>
 			<Spacer />
-			<Input
-				borderRadius="10px"
-				type="text"
-				width={600}
-				placeholder="Search"
-				ml="2"
-				size="sm"
-				bg="white.20"
-			/>
+			{isSmallerThan768 ? null : (
+				<Input
+					borderRadius="10px"
+					type="text"
+					width={400}
+					placeholder="Search"
+					ml="2"
+					size="sm"
+					bg="white.20"
+				/>
+			)}
 
 			<Spacer />
 
@@ -77,13 +84,29 @@ function Navbar() {
 				<FaShoppingBag />
 			</Link>
 			<Spacer />
-			<Link fontSize="1.6em" href="/login">
+			{isAuthenticated && (
+				<Link fontSize="1.6em" href="/login">
+					<FaUserAlt />
+				</Link>
+			)}
+			<Spacer />
+			<p>Welcome! </p>
+			{/* <Link fontSize="1.6em" href="/login">
 				<FaUserAlt />
 			</Link>
 			<Spacer />
 			<Link fontSize="1.6em" href="/contact">
 				<BsMailbox2 />
-			</Link>
+			</Link> */}
+			{isAuthenticated && <p>|| {user.name} || </p>}
+			<Spacer />
+			{isAuthenticated ? (
+				<Button onClick={() => logout({ returnTo: window.location.origin })}>
+					Log Out
+				</Button>
+			) : (
+				<Button onClick={() => loginWithRedirect()}>Log In</Button>
+			)}
 
 			<Spacer />
 		</Flex>
