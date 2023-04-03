@@ -27,4 +27,4 @@ ans order some product at a easily way
 -then you can order this product.
 
 <h3>HomePage</h3>
-<img src="C:\Users\abhig\OneDrive\Pictures\Screenshots\Screenshot 2023-04-03 140916.png"/>
+<img src="C:\Users\abhig\OneDrive\Pictures\Screenshots\Screenshot 2023-04-03 140916.png" alt="homepage"/>
