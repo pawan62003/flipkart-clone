@@ -3,6 +3,7 @@ import ProductList from '../Components/ProductList'
 import SideBarProduct from '../Components/SideBarProduct'
 import styled from 'styled-components'
 import Navbar from '../Components/Navbar'
+import Footer from '../Components/Footer'
 //import styled from 'styled-components'
 import { Box } from '@chakra-ui/react'
 import "./productPg.css"
@@ -29,7 +30,7 @@ const ProductPage = () => {
         <ProductList/>
       </div>
     </div>
-    <footer/>
+    <Footer/>
     </div>
   )
 

@@ -229,7 +229,7 @@ const Ordercheck = () => {
                 boxSize="100%"
                 // maxWidth={'250px'}
                 src={
-                  item.poster||item.image.image1
+                  item.defaultImages
                 }
               />
             </Flex>

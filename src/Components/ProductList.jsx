@@ -6,7 +6,7 @@ import { getProductData } from "../redux/ProductReducer/action";
 
 import ProductCard from "./ProductCard"
 import ProductPage from '../Pages/ProductPage'
-
+import Footer from "./Footer";
 
 const ProductList = () => {
 
@@ -34,6 +34,7 @@ const ProductList = () => {
             })}
             
         </div>
+       
     </div>
   )
 };

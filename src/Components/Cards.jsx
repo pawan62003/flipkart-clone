@@ -10,6 +10,7 @@ import {
 	chakra,
 	Tooltip,
 } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 import { BsStar, BsStarFill, BsStarHalf } from "react-icons/bs";
 import { FiShoppingCart } from "react-icons/fi";
 
@@ -53,6 +54,7 @@ const Cards = () => {
 				/>
 
 				<Box p="6">
+					<Link to='/product'>
 					<Box d="flex" alignItems="baseline">
 						{data.isNew && (
 							<Badge rounded="full" px="2" fontSize="0.8em" colorScheme="red">
@@ -60,7 +62,9 @@ const Cards = () => {
 							</Badge>
 						)}
 					</Box>
+					</Link>
 					<Flex mt="1" justifyContent="space-between" alignContent="center">
+						<Link to={'/product'}>
 						<Box
 							fontSize="2xl"
 							fontWeight="semibold"
@@ -69,6 +73,7 @@ const Cards = () => {
 							isTruncated>
 							{data.name}
 						</Box>
+						</Link>
 						{/* <Tooltip
 							label="Add to cart"
 							bg="white"
@@ -82,12 +87,14 @@ const Cards = () => {
 					</Flex>
 
 					<Flex justifyContent="space-between" alignContent="center">
+						<Link>
 						<Box fontSize="2xl" color={useColorModeValue("gray.800", "white")}>
 							<Box as="span" color={"gray.600"} fontSize="lg">
 								Rs -
 							</Box>
 							{data.price.toFixed(2)}
 						</Box>
+						</Link>
 					</Flex>
 				</Box>
 			</Box>
