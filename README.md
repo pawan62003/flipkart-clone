@@ -1,20 +1,16 @@
-# cosmic-toy-4083
 <h1><a href="https://buykart-pawan62003.vercel.app/">Buy-Kart</a></h1>
 
+<h2>Its an E-commerce website used for shopping fashion wears and grocery products</h2>
 
-my website is a basic e commerse website here you see the some produce
-ans order some product at a easily way
 
-### for building this website.
-
--javascript
--React.js
--Chakra UI
--HTML
--CSS
--jsx
--React-router-dom
-
+<h1>Tech Stacks:</h1>
+<ul>
+<li>JavaScript</li>
+<li>Reactjs</li>
+<li>Chakra UI</li>
+<li>HTML</li>
+<li>CSS</li>
+</ul>
  ### How to use this Website.
 -first you go to my website link.
 -then you need to login your account.
