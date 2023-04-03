@@ -7,14 +7,15 @@ import {
 	Divider,
 	Stack,
 } from "@chakra-ui/react";
-import {
-	Link,
-	DrawerHeader,
-	DrawerBody,
-	DrawerContent,
-	DrawerOverlay,
-	Drawer,
-} from "@chakra-ui/react";
+import { Link } from "react-router-dom";
+// import {
+// 	Link,
+// 	DrawerHeader,
+// 	DrawerBody,
+// 	DrawerContent,
+// 	DrawerOverlay,
+// 	Drawer,
+// } from "@chakra-ui/react";
 // import { InputGroup, InputRightElement, CloseButton } from "@chakra-ui/react";
 import { Flex, Input, Spacer, Image } from "@chakra-ui/react";
 import { BsSearch, BsMailbox2 } from "react-icons/bs";
@@ -23,8 +24,11 @@ import { FaShoppingBag } from "react-icons/fa";
 import { FaUserAlt } from "react-icons/fa";
 
 import "./navbar.css";
+import { useAuth0 } from "@auth0/auth0-react";
 
 function Navbar() {
+	const { loginWithRedirect, isAuthenticated, logout, user } = useAuth0();
+
 	return (
 		<Flex
 			p="3"
@@ -36,7 +40,7 @@ function Navbar() {
 			bg="whiteAlpha.800"
 			zIndex="999">
 			<Spacer />
-			<Link href="/">
+			<Link to="/">
 				<Box
 					fontSize={["1.3em", "1.3em", "1.8em", "1.8em"]}
 					fontWeight={"900"}
@@ -72,18 +76,33 @@ function Navbar() {
 			<Spacer />
 			<Link
 				fontSize="1.6em"
-				href="/cart
-			">
+				to={'/cart'}>
 				<FaShoppingBag />
 			</Link>
 			<Spacer />
-			<Link fontSize="1.6em" href="/login">
+			{isAuthenticated && (
+				<Link fontSize="1.6em" to="/dashboard">
+					<FaUserAlt />
+				</Link>
+			)}
+			<Spacer />
+			<p>Welcome! </p>
+			{/* <Link fontSize="1.6em" href="/login">
 				<FaUserAlt />
 			</Link>
 			<Spacer />
 			<Link fontSize="1.6em" href="/contact">
 				<BsMailbox2 />
-			</Link>
+			</Link> */}
+			{isAuthenticated && <p>|| {user.name} || </p>}
+			<Spacer />
+			{isAuthenticated ? (
+				<Button onClick={() => logout({ returnTo: window.location.origin })}>
+					Log Out
+				</Button>
+			) : (
+				<Button onClick={() => loginWithRedirect()}>Log In</Button>
+			)}
 
 			<Spacer />
 		</Flex>

@@ -20,9 +20,12 @@ const OrderHistory = () => {
     
     return <>
       <Navbar />
-      <Box m={'9px'} marginRight={'12%'} fontSize={20} bg='blue.500' w='100%' p={1} color='white'>
-        Here You Can Find Your Product Order History
+      <Box m={'9px'} marginRight={'12%'} fontSize={20} bg='blue.500' w='100%' p={5} color='white'>
+        {/* Here You Can Find Your Product Order History */}
      </Box>
+      <Button m={'9px'} colorScheme='blue' fontSize={20} variant='outline'>
+         Here You Can Find Your Product Order History
+      </Button>
      {
         cartHistory.map(item =>
             <div style={{width:'70%',margin:'auto',}}>
@@ -38,7 +41,9 @@ const OrderHistory = () => {
           <Image
             objectFit='cover'
             maxW={{ base: '100%', sm: '300px' }}
-            src={item.poster||item.image.image1}
+            src={
+              item.defaultImages
+            }
             alt='Caffe Latte'
             // maxH={{ base: '100%', sm: '200px' }}
             height={'300px'}

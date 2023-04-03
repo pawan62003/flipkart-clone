@@ -7,6 +7,8 @@ import { Admin } from "./Admin";
 import HomePage from "./HomePage";
 import ProductDetail from "./ProductDetail";
 import ProductPage from "./ProductPage";
+
+
 import { PrivateRoute } from "../Components/PrivateRoute";
 import Ordercheck from "./ordercheck";
 import OrderHistory from "./orderHistory";
@@ -22,7 +24,9 @@ export const AllRoutes = () => {
 			<Route path="/cart" element={<Cart />} />
 			<Route path="/dashboard/admin" element={<Admin/>}/>
 			<Route path="/dashboard/edit/:id" element={
+			
 				<EditProducts/>
+			
 			}/>
 			<Route path="/dashboard" element={<Dashboard />} />
 			<Route path="*" element={<ErrorPage />} />
