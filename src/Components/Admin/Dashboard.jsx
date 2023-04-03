@@ -101,7 +101,6 @@ const DIV=styled.div`
 margin-left:310px;
 padding:15px;
    display:grid;
-  /* border:1px solid black; */
   justify-content:center;
   align-items:center;
   grid-template-columns: repeat(3,auto);
