@@ -27,4 +27,24 @@ ans order some product at a easily way
 -then you can order this product.
 
 <h3>HomePage</h3>
-<img src="C:\Users\abhig\OneDrive\Pictures\Screenshots\Screenshot 2023-04-03 140916.png" alt="homepage"/>
+<img src="/public/Images/Homepage.png" alt="homepage"/>
+<h3>Login/SignUp </h3>
+<img src="/public/Images/login.png" alt="homepage"/>
+<h3>Products Page</h3>
+<img src="/public/Images/Products.png" alt="homepage"/>
+<h3>Single Product</h3>
+<img src="/public/Images/singleProduct.png" alt="homepage"/>
+<h3>Cart</h3>
+<img src="/public/Images/cart.png" alt="homepage"/>
+<h3>Checkout Page</h3>
+<img src="/public/Images/checkout.png" alt="homepage"/>
+<h3>Order Details</h3>
+<img src="/public/Images/ordersummary.png" alt="homepage"/>
+<h3>Admin Dashboard</h3>
+<img src="/public/Images/AdminPanel.png" alt="homepage"/>
+<h3>Admin Update Product</h3>
+<img src="/public/Images/EditProduct.png" alt="homepage"/>
+<h3>Admin Add Product</h3>
+<img src="/public/Images/addProduct.png" alt="homepage"/>
+<h3>Error Page</h3>
+<img src="/public/Images/Error.png" alt="homepage"/>
