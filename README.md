@@ -26,7 +26,6 @@
 <li>HTML</li>
 <li>CSS</li>
 </ul>
-<h2>Folder Structure</h2>
 <h3>HomePage</h3>
 <img src="/Images/Homepage.png" alt="homepage"/>
 <h3>Login/SignUp </h3>
